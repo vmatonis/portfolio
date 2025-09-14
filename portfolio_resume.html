@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent Matonis - Senior Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #9b59b6 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background: linear-gradient(45deg, #2c3e50, #3498db, #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3.2em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #2c3e50, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+            transform: translateY(-3px);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .section {
+            margin: 35px 0;
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .about p {
+            font-size: 1.15em;
+            text-align: justify;
+            margin-bottom: 18px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.08), rgba(155, 89, 182, 0.08));
+            padding: 25px;
+            border-radius: 18px;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.12), rgba(155, 89, 182, 0.12));
+            transform: translateX(8px);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 1.05em;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-category li:before {
+            content: "▸";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .experience-item {
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(52, 152, 219, 0.05));
+            border-radius: 18px;
+            border-left: 5px solid #9b59b6;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-item:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(52, 152, 219, 0.1));
+            transform: translateX(12px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .job-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1.15em;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .location {
+            font-size: 1em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .date {
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            margin-top: 18px;
+            color: #555;
+        }
+
+        .job-description p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .job-description ul {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+
+        .job-description li {
+            margin: 10px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .years-badge {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 25px;
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                font-size: 48px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-delay-1 { animation-delay: 0.2s; }
+        .animate-delay-2 { animation-delay: 0.4s; }
+        .animate-delay-3 { animation-delay: 0.6s; }
+        .animate-delay-4 { animation-delay: 0.8s; }
+
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, rgba(52, 152, 219, 0.2) 50%, transparent 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="card fade-in">
+            <div class="header">
+                <div class="profile-img">VM</div>
+                <h1>Vincent Matonis</h1>
+                <div class="subtitle">Principal Software Engineer & Platform Integration Lead</div>
+                
+                <div class="contact-info">
+                    <a href="mailto:vmatonis@icloud.com" class="contact-item">
+                        📧 vmatonis@icloud.com
+                    </a>
+                    <a href="tel:+17087892326" class="contact-item">
+                        📱 (708) 789-2326
+                    </a>
+                    <span class="contact-item">
+                        📍 Chicago, IL
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="card fade-in animate-delay-1">
+            <div class="section about">
+                <h2>Professional Summary</h2>
+                <p>
+                    Seasoned software engineer and technical leader with <span class="highlight">15+ years of experience</span> 
+                    designing and implementing enterprise-scale platforms and microservice architectures. Currently serving as 
+                    Principal/Lead for Platform Integrations at Donnelley Financial Solutions, where I lead a globally distributed 
+                    team of 15 engineers in creating unified platform experiences.
+                </p>
+                <p>
+                    My expertise spans <span class="highlight">full-stack development, database architecture, and API design</span>, 
+                    with a proven track record in contract negotiation, project management, and technical modernization initiatives. 
+                    I specialize in transforming legacy systems into modern, scalable solutions while maintaining business continuity.
+                </p>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="card fade-in animate-delay-2">
+            <div class="section">
+                <h2>Technologies & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Core Programming <span class="years-badge">10+ years</span></h3>
+                        <ul>
+                            <li>C, C++, C#</li>
+                            <li>JavaScript/Node.js</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>PHP</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web Technologies</h3>
+                        <ul>
+                            <li>HTML5/CSS3/JavaScript</li>
+                            <li>Frontend Engineering</li>
+                            <li>E-Commerce (Magento, WooCommerce)</li>
+                            <li>RESTful APIs & Microservices</li>
+                            <li>System Architecture</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Database Systems</h3>
+                        <ul>
+                            <li>MySQL, MSSQL</li>
+                            <li>Oracle Database <span class="years-badge">6+ years</span></li>
+                            <li>Database Administration</li>
+                            <li>Schema Design & Optimization</li>
+                            <li>Performance Tuning</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Leadership & Business</h3>
+                        <ul>
+                            <li>Team Management (15+ engineers)</li>
+                            <li>Contract Negotiation</li>
+                            <li>Project Planning & Budgeting</li>
+                            <li>Technical Documentation</li>
+                            <li>Vendor Relations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="card fade-in animate-delay-3">
+            <div class="section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Principal/Lead — Platform Integrations</div>
+                            <div class="company">Donnelley Financial Solutions</div>
+                            <div class="location">Chicago, IL; Boston, MA</div>
+                        </div>
+                        <div class="date">July 2020 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Leading heterogeneous platform integrations to create a unified ecosystem that seamlessly connects all product offerings and enables third-party vendor integration.</p>
+                        <ul>
+                            <li>Designed greenfield microservice architecture integrating full-service business workflows with flagship self-service financial compliance filing software</li>
+                            <li>Successfully negotiated and managed contracts with multiple development vendors</li>
+                            <li>Built and led a globally distributed team of 15 engineers across multiple time zones</li>
+                            <li>Architected extensible systems allowing seamless integration of third-party vendor services</li>
+                            <li>Established technical specifications and integration standards for cross-platform compatibility</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Senior Software Engineer</div>
+                            <div class="company">Donnelley Financial Solutions</div>
+                            <div class="location">Chicago, IL; Boston, MA</div>
+                        </div>
+                        <div class="date">July 2017 - July 2020</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Technical and project lead responsible for end-to-end project planning, architecture design, and modernization initiatives.</p>
+                        <ul>
+                            <li>Engineered conversion system for proprietary typesetting formats to xHTML for regulatory compliance</li>
+                            <li>Designed and implemented enterprise-wide file conversion infrastructure supporting HTML to PDF/PostScript, HTML to xHTML, and other critical transformations</li>
+                            <li>Led high-visibility SEC compliance project adding iXBRL tagging to Form 8-K cover pages under tight deadlines</li>
+                            <li>Developed centralized web frontend consolidating 10+ operational dashboards across 6 heterogeneous databases</li>
+                            <li>Spearheaded migration from legacy systems (TFS, ClearQuest, SourceSafe) to modern Azure DevOps and Git workflows</li>
+                            <li>Implemented comprehensive CI/CD strategy for both new and legacy software throughout the ecosystem</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Vice President</div>
+                            <div class="company">Flucomp Enterprises, Inc.</div>
+                            <div class="location">Hickory Hills, IL; Boston, MA</div>
+                        </div>
+                        <div class="date">January 2010 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Founded and operate family consulting business specializing in data science, software development, financial trading, and full-stack web solutions.</p>
+                        <ul>
+                            <li>Full-stack development using C#/.NET, PHP, Node.js, and C++ for diverse client requirements</li>
+                            <li>E-commerce website development and deployment, primarily serving small business clients</li>
+                            <li>Created and implemented comprehensive social network marketing strategies</li>
+                            <li>Advanced data analytics and machine learning for financial markets (stocks, bonds, options)</li>
+                            <li>Negotiated complex agreements including patent licensing, staffing contracts, and Cooperative R&D agreements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Contract Software Developer</div>
+                            <div class="company">R.R. Donnelley</div>
+                            <div class="location">Chicago, IL</div>
+                        </div>
+                        <div class="date">April 2016 - December 2016</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Contracted through Flucomp to implement new features and optimize legacy typesetting software written in C++ on Windows.</p>
+                        <ul>
+                            <li>Implemented intelligent page modification detection to dramatically improve save process performance</li>
+                            <li>Researched and proved CRC32 inadequacy for file integrity at enterprise scale</li>
+                            <li>Successfully implemented SHA-256 hashing system in-place for enhanced security</li>
+                            <li>Identified and resolved critical memory leaks improving system stability</li>
+                            <li>Created migration scripts for upgrading from Visual C++ 6 to Visual Studio 2010</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Developer</div>
+                            <div class="company">Scaled Dynamics</div>
+                            <div class="location">Chicago, IL</div>
+                        </div>
+                        <div class="date">August 2013 - March 2014</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Contracted to develop custom trading algorithms and specialized software solutions for financial clients.</p>
+                        <ul>
+                            <li>Led major release of flagship automated purchasing system using jQuery and existing sales architecture</li>
+                            <li>Developed real-time in-browser communications platform (voice, video, chat) enabling direct broker-client interactions</li>
+                            <li>Created custom trading algorithms optimized for specific client requirements and market conditions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Vincent Matonis. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards for animation
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Enhanced hover effects for experience items
+            document.querySelectorAll('.experience-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.borderLeft = '5px solid #3498db';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.borderLeft = '5px solid #9b59b6';
+                });
+            });
+
+            // Typing effect for name
+            const nameElement = document.querySelector('h1');
+            const originalText = nameElement.textContent;
+            nameElement.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    nameElement.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 80);
+                }
+            };
+            
+            setTimeout(typeWriter, 800);
+
+            // Smooth scrolling for any internal links (if added later)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
