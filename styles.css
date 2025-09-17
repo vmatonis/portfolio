@@ -42,10 +42,26 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: #0f172a !important;
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.2);
+    backdrop-filter: blur(5px);
     z-index: 1000;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar.morphed {
+    background: rgba(15, 23, 42, 0.98) !important;
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+}
+
+.navbar.morphed .nav-container {
+    padding: 0.75rem 1rem;
+}
+
+.navbar.morphed .nav-logo {
+    font-size: 1.3rem;
 }
 
 .nav-container {
@@ -55,6 +71,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: padding 0.3s ease;
 }
 
 .nav-logo {
@@ -62,6 +79,7 @@ body {
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
+    transition: font-size 0.3s ease;
 }
 
 .nav-menu {
@@ -1144,6 +1162,60 @@ section {
 
 .footer-contact-item i {
     font-size: 1.2rem;
+}
+
+/* Motion Calendar Modal Styles */
+.motion-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.motion-modal {
+    background: var(--card-bg);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border);
+}
+
+.motion-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--surface);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.motion-modal-close:hover {
+    background: var(--card-bg-hover);
+    color: var(--primary);
+}
+
+.motion-modal iframe {
+    border-radius: 0.5rem;
 }
 
 /* Responsive Design */

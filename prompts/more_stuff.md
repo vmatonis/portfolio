@@ -1,0 +1,3 @@
+- i wanna add a new page when the user clicks get in touch, should go to a calendar invite managed by the Motion app
+- integrate whatever it is that we need to, to make that happen. 
+- create a README.md on how to connect motion
