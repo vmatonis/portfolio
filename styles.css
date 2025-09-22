@@ -261,12 +261,11 @@ section {
     bottom: 0;
     width: 4px;
     background: linear-gradient(180deg,
-        var(--primary-color) 0%,
-        var(--accent-color) 25%,
-        #10b981 50%,
-        #f59e0b  75%,
-        #9333ea 100%
-    );
+            var(--primary-color) 0%,
+            var(--accent-color) 25%,
+            #10b981 50%,
+            #f59e0b 75%,
+            #9333ea 100%);
     border-radius: 2px;
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
 }
@@ -1398,5 +1397,521 @@ section {
     .skill-category,
     .education-item {
         padding: 1.5rem;
+    }
+}
+
+.separator {
+    width: 10em;
+    margin:0.25em auto;
+    padding: 0.25em;
+    border: 0;
+    border-top: 1px solid var(--text-light);
+}
+@media print {
+    @page { margin: 0; }
+
+  header, footer {
+    display: none !important;
+  }
+}
+
+@media print {
+    @page {
+        margin: 0.5in;
+        size: letter;
+    }
+
+    /* Remove browser default headers and footers */
+    @page {
+        margin-top: 0.5in;
+        margin-bottom: 0.5in;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        font-size: 11pt;
+        line-height: 1.3;
+        color: #000 !important;
+        background: white !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hide navigation and interactive elements */
+    .navbar,
+    .hamburger,
+    .nav-menu,
+    .hero-buttons,
+    .motion-modal-overlay,
+    .motion-modal {
+        display: none !important;
+    }
+
+    /* Optimize sections for print */
+    section {
+        padding: 0.8rem 0 !important;
+        background: white !important;
+        height: auto !important;
+        overflow: visible !important;
+        max-height: none !important;
+    }
+
+    .hero {
+        padding: 0.5rem 0 !important;
+        background: white !important;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Typography optimization */
+    .hero-title {
+        font-size: 24pt !important;
+        margin-bottom: 0.3rem !important;
+        color: #000 !important;
+    }
+
+    .hero-subtitle {
+        font-size: 14pt !important;
+        margin-bottom: 0.3rem !important;
+        color: #333 !important;
+    }
+
+    .hero-description {
+        font-size: 11pt !important;
+        margin-bottom: 0.5rem !important;
+        color: #555 !important;
+        line-height: 1.4;
+    }
+
+    .section-title {
+        font-size: 16pt !important;
+        margin-bottom: 0.8rem !important;
+        color: #000 !important;
+        border-bottom: 2px solid #333;
+        padding-bottom: 0.2rem;
+    }
+
+    /* Experience section optimization */
+    .timeline-intro {
+        margin-bottom: 0.5rem !important;
+        font-size: 10pt !important;
+        color: #666 !important;
+    }
+
+    .experience-timeline {
+        padding-left: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+        max-height: none !important;
+    }
+
+    .experience-timeline::before {
+        display: none !important;
+    }
+
+    .experience-item {
+        margin: 0 0 0.4rem 0 !important;
+        padding: 0.3rem !important;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0.3rem !important;
+        box-shadow: none !important;
+        display: block !important;
+        visibility: visible !important;
+        
+    }
+
+    /* Ensure all experience item types are visible with proper text colors */
+    .experience-item.featured,
+    .experience-item.entrepreneur,
+    .experience-item.fintech {
+        display: block !important;
+        visibility: visible !important;
+        color: #000 !important;
+    }
+
+    .experience-item.entrepreneur *,
+    .experience-item.fintech * {
+        color: #000 !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    /* Force specific company names to be visible */
+    .experience-item.entrepreneur .company,
+    .experience-item.fintech .company,
+    .experience-item.entrepreneur .job-title,
+    .experience-item.fintech .job-title,
+    .experience-item.entrepreneur .role-summary,
+    .experience-item.fintech .role-summary,
+    .experience-item.entrepreneur .achievement,
+    .experience-item.fintech .achievement {
+        display: block !important;
+        visibility: visible !important;
+        color: #000 !important;
+        opacity: 1 !important;
+        background: white !important;
+    }
+
+    .experience-item::before,
+    .experience-item::after {
+        display: none !important;
+    }
+
+    .role-badge {
+        position: static !important;
+        display: inline-block !important;
+        background: #f0f0f0 !important;
+        color: #333 !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-bottom: 0.3rem !important;
+        font-size: 8pt !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .experience-header {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .job-title {
+        font-size: 13pt !important;
+        margin-bottom: 0.2rem !important;
+        color: #000 !important;
+    }
+
+    .title-icon {
+        display: none !important;
+    }
+
+    .company {
+        font-size: 12pt !important;
+        color: #333 !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    .job-meta {
+        margin-bottom: 0.3rem !important;
+        gap: 0.5rem !important;
+    }
+
+    .location,
+    .duration {
+        font-size: 9pt !important;
+        color: #666 !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .career-progression {
+        margin-top: 0.3rem !important;
+        font-size: 8pt !important;
+        color: #666 !important;
+    }
+
+    .progression-item {
+        background: #f8f8f8 !important;
+        padding: 0.1rem 0.3rem !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .impact-stats {
+        display: none !important;
+    }
+
+    .role-summary {
+        background: white !important;
+        padding: 0.2rem !important;
+        margin-bottom: 0.2rem !important;
+        font-size: 8pt !important;
+        border-left: 2px solid #333 !important;
+        border-radius: 0 !important;
+        color: #000 !important;
+        border: 1px solid #ddd !important;
+    }
+
+    .achievements-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.2rem !important;
+    }
+
+    .achievement {
+        padding: 0.1rem !important;
+        background: white !important;
+        border: 1px solid #eee !important;
+        border-radius: 0.2rem !important;
+        margin-bottom: 0.05rem !important;
+    }
+
+    .achievement::before {
+        display: none !important;
+    }
+
+    .achievement-icon {
+        display: none !important;
+    }
+
+    .achievement-text {
+        color: #000 !important;
+        font-size: 8pt !important;
+        line-height: 1.2 !important;
+    }
+
+    .achievement-text strong {
+        font-size: 9pt !important;
+        margin-bottom: 0.05rem !important;
+        color: #000 !important;
+        display: inline !important;
+    }
+
+    /* Show first 4 achievements per job for print */
+    .experience-item .achievement:nth-child(n+5) {
+        display: none !important;
+    }
+
+    /* Skills section optimization - ultra condensed for print */
+    .skills-intro {
+        margin-bottom: 0.3rem !important;
+        font-size: 9pt !important;
+    }
+
+    .skill-tier {
+        margin-bottom: 0.4rem !important;
+        padding: 0.3rem !important;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .skill-tier::before {
+        display: none !important;
+    }
+
+    .tier-header {
+        margin-bottom: 0.2rem !important;
+    }
+
+    .tier-title {
+        font-size: 10pt !important;
+        color: #000 !important;
+    }
+
+    .tier-subtitle {
+        display: none !important;
+    }
+
+    .skills-list {
+        gap: 0.1rem !important;
+    }
+
+    .skill-tag {
+        background: #f0f0f0 !important;
+        color: #333 !important;
+        padding: 0.05rem 0.3rem !important;
+        font-size: 7pt !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0.2rem !important;
+        box-shadow: none !important;
+    }
+
+    /* Hide some skill tiers for ultra compact print */
+    .tier-specialized,
+    .tier-leadership {
+        display: none !important;
+    }
+
+    /* Portfolio section optimization - condensed for print */
+    .portfolio-intro {
+        margin-bottom: 0.3rem !important;
+        font-size: 9pt !important;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 0.3rem !important;
+    }
+
+    .portfolio-item {
+        padding: 0.3rem !important;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0.2rem !important;
+    }
+
+    .portfolio-item::before {
+        display: none !important;
+    }
+
+    .project-header {
+        margin-bottom: 0.2rem !important;
+    }
+
+    .project-icon {
+        display: none !important;
+    }
+
+    .project-type {
+        background: #f0f0f0 !important;
+        color: #333 !important;
+        font-size: 6pt !important;
+        padding: 0.05rem 0.2rem !important;
+    }
+
+    .project-title {
+        font-size: 9pt !important;
+        margin-bottom: 0.2rem !important;
+        color: #000 !important;
+        line-height: 1.2 !important;
+    }
+
+    .project-description {
+        display: none !important;
+    }
+
+    .tech-stack {
+        margin-bottom: 0.2rem !important;
+        gap: 0.05rem !important;
+    }
+
+    .tech-tag {
+        background: #f8f8f8 !important;
+        color: #555 !important;
+        font-size: 6pt !important;
+        padding: 0.05rem 0.15rem !important;
+    }
+
+    .project-highlights {
+        gap: 0.1rem !important;
+    }
+
+    .highlight {
+        font-size: 7pt !important;
+        color: #666 !important;
+    }
+
+    /* About section optimization */
+    .about-content {
+        max-width: 100% !important;
+    }
+
+    .about-text p {
+        font-size: 10pt !important;
+        margin-bottom: 0.5rem !important;
+        color: #333 !important;
+        line-height: 1.4 !important;
+    }
+
+    .separator {
+        margin: 0.3rem auto !important;
+        border-color: #ccc !important;
+    }
+
+    /* Footer optimization */
+    .footer {
+        background: white !important;
+        border-top: 1px solid #ddd !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    .footer-contact h3 {
+        font-size: 12pt !important;
+        color: #333 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .footer-contact-info {
+        gap: 1rem !important;
+        margin-top: 0.3rem !important;
+    }
+
+    .footer-contact-item {
+        font-size: 10pt !important;
+        color: #555 !important;
+    }
+
+    .footer-contact-item i {
+        font-size: 10pt !important;
+    }
+
+    /* Remove all page break controls for continuous flow */
+
+    /* FINAL OVERRIDE - Force all experience items to show */
+    .experience-item {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        z-index: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .experience-item * {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+    }
+
+    /* Fix stat-items to not be full width */
+    .experience-item .impact-stats {
+        display: none !important;
+    }
+
+    .experience-item .stat-item {
+        display: inline-block !important;
+        width: auto !important;
+        flex: none !important;
+    }
+
+    .experience-item .job-title,
+    .experience-item .company,
+    .experience-item .experience-header,
+    .experience-item .role-summary {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+    }
+
+    /* Fix achievements grid */
+    .experience-item .achievements-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.2rem !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .experience-item .achievement {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+    }
+
+    /* Fix career progression to be inline */
+    .experience-item .career-progression {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+
+    .experience-item .progression-item,
+    .experience-item .progression-arrow {
+        display: inline !important;
     }
 }
